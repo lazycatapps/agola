@@ -1,0 +1,221 @@
+# app 的唯一 id,上架到商店需要保证不要冲突,尽量使用开发者自己的域名作为后缀.
+package: cloud.lazycat.app.liu.agola
+# app 的版本
+version: 0.11.0
+
+name: Agola
+keyword: agola,ci,cd,cicd,devops,continuous integration,continuous deployment,git,github,gitlab,gitea
+description: Agola - CI/CD 平台
+
+# 软件名称,会显示在启动器之类的地方
+locales:
+  zh:
+    name: Agola
+    description: |
+      ## Agola - CI/CD 重新定义
+
+      **官方网站:** https://agola.io
+      **仓库地址:** https://github.com/lazycatapps/agola.git
+      **快速开始:** https://github.com/lazycatapps/agola/blob/main/QUICKSTART.md
+
+      Agola 是一个现代化的开源 CI/CD（持续集成/持续部署）平台，旨在重新定义构建自动化工作流。它提供了容器化、可重现和可重启的运行环境，支持高级工作流程和多种 Git 平台集成。
+
+      ## 主要功能
+
+      - 🐳 **容器化执行**: 所有任务在隔离的容器环境中运行，确保可重现性
+      - 🔄 **可重启运行**: 从失败点恢复执行，而不是从头开始
+      - 🌐 **多 Git 平台支持**: 同时集成 GitHub、GitLab、Gitea 和自定义 Git 仓库
+      - 🚀 **高级工作流**: 支持矩阵构建、扇入扇出、多架构等复杂工作流
+      - ☸️ **灵活部署**: 可在 Kubernetes 集群、本地 Docker 等多种平台上运行
+      - 📝 **Jsonnet 配置**: 使用 Jsonnet 模板生成配置，避免复杂的 YAML
+      - 🔐 **强大的密钥管理**: 支持密钥和变量系统，用于环境特定测试
+      - ⚡ **依赖缓存**: 加速任务执行
+      - 🎯 **用户直接运行**: 允许在本地仓库直接执行测试
+      - 📊 **易于安装管理**: 支持单实例或分布式部署
+
+      ## 使用方法
+
+      1. 启动应用后，通过域名访问 Agola Web 界面
+      2. 连接你的 Git 平台账号（GitHub/GitLab/Gitea）
+      3. 在项目中添加 `.agola/config.jsonnet` 配置文件
+      4. 推送代码或创建 Pull Request 触发自动构建
+      5. 在 Web 界面查看运行状态和日志
+
+      ## 配置说明
+
+      配置文件位于 `/lzcapp/var/config/config.yaml`，可根据需要修改：
+      - API 地址和域名配置
+      - Git 平台集成设置
+      - 执行器配置
+      - 数据存储路径
+
+      ## 注意事项
+
+      - 本应用已启用后台任务，系统不会自动休眠
+      - 首次启动会自动替换配置文件中的域名占位符
+      - 数据存储在 `/lzcapp/var/agola` 目录下
+      - 支持多用户同时使用
+
+  en:
+    name: Agola
+    description: |
+      ## Agola - CI/CD Redefined
+
+      **Official Website:** https://agola.io
+
+      **Repository:** https://github.com/lazycatapps/agola.git
+      **Quickstart:** https://github.com/lazycatapps/agola/blob/main/QUICKSTART.md
+
+      Agola is a modern open-source CI/CD (Continuous Integration/Continuous Deployment) platform designed to redefine build automation workflows. It provides containerized, reproducible, and restartable run environments, supporting advanced workflows and multiple Git platform integrations.
+
+      ## Main Features
+
+      - 🐳 **Containerized Execution**: All tasks run in isolated container environments, ensuring reproducibility
+      - 🔄 **Restartable Runs**: Resume execution from failure points instead of starting over
+      - 🌐 **Multi-Git Platform Support**: Simultaneous integration with GitHub, GitLab, Gitea, and custom Git repositories
+      - 🚀 **Advanced Workflows**: Support for matrix builds, fan-in/fan-out, multi-architecture, and other complex workflows
+      - ☸️ **Flexible Deployment**: Run on Kubernetes clusters, local Docker, and various platforms
+      - 📝 **Jsonnet Configuration**: Use Jsonnet templates to generate configurations, avoiding complex YAML
+      - 🔐 **Powerful Secrets Management**: Support for secrets and variables system for environment-specific testing
+      - ⚡ **Dependency Caching**: Accelerate task execution
+      - 🎯 **User Direct Runs**: Enable testing directly in local repositories
+      - 📊 **Easy Installation**: Support for single-instance or distributed deployments
+
+      ## Usage Instructions
+
+      1. After starting the application, access the Agola Web interface via the domain
+      2. Connect your Git platform account (GitHub/GitLab/Gitea)
+      3. Add a `.agola/config.jsonnet` configuration file to your project
+      4. Push code or create a Pull Request to trigger automatic builds
+      5. View run status and logs in the Web interface
+
+      ## Configuration
+
+      Configuration file is located at `/lzcapp/var/config/config.yaml`, which can be modified as needed:
+      - API address and domain configuration
+      - Git platform integration settings
+      - Executor configuration
+      - Data storage paths
+
+      ## Notes
+
+      - This application has background tasks enabled, the system will not auto-sleep
+      - First startup will automatically replace domain placeholders in the configuration file
+      - Data is stored in the `/lzcapp/var/agola` directory
+      - Supports multiple users simultaneously
+
+# 软件本身的 license
+license: https://choosealicense.com/licenses/apache-2.0/
+
+# 软件的主页,会在商店等地方体现
+homepage: https://github.com/lazycatapps/agola
+
+# lpk 的作者,会在商店等地方体现
+author: liu
+
+# application 作为一个特殊的 container 运行，对应的 service 名称为固定的`app`， 其他 service 可以通过此名称与 app 进行通讯
+application:
+  #是否存在后台任务， 若存在则系统不会对此 app 进行主动休眠等操作
+  background_task: true
+
+  # 期望的 app 域名，如果系统中已经有对应域名则会提示用户选择其他域名。 最终 app 分配到的域名以/lzcapp/run/app.subdomain 为准
+  subdomain: agola
+
+  routes:
+    - /=http://agola:8000
+
+  depends_on:
+    - agola
+
+  # 健康检测 (开发阶段可设 disable)
+  health_check:
+    test_url: http://agola:8000             # HTTP URL 检测 (application 专用)
+    start_period: 30s                       # 启动等待时间
+    disable: false                          # 禁用健康检测
+
+  public_path:
+    - /                         # 无需登录即可访问
+
+  # # TCP/UDP 服务配置
+  # ingress:
+  #   - protocol: tcp                       # 协议类型 (tcp/udp)
+  #     port: 4000                          # 目标端口号 (留空则使用入站端口)
+  #     service: agola                      # 服务容器名称 (留空则为 app)
+  #     description: Run Server             # 服务描述
+  #     publish_port: "4000"                # 入站端口号 (支持 "1000-50000" 范围)
+  #     send_port_info: false               # 发送 uint16 端口信息 (little endian)
+  #     yes_i_want_80_443: false            # 允许 80/443 流量 (绕过系统鉴权,慎用!)
+  #   - protocol: tcp                       # 协议类型 (tcp/udp)
+  #     port: 4002                          # 目标端口号 (留空则使用入站端口)
+  #     service: agola                      # 服务容器名称 (留空则为 app)
+  #     description: Config Store           # 服务描述
+  #     publish_port: "4002"                # 入站端口号 (支持 "1000-50000" 范围)
+  #     send_port_info: false               # 发送 uint16 端口信息 (little endian)
+  #     yes_i_want_80_443: false            # 允许 80/443 流量 (绕过系统鉴权,慎用!)
+  #   - protocol: tcp                       # 协议类型 (tcp/udp)
+  #     port: 4003                          # 目标端口号 (留空则使用入站端口)
+  #     service: agola                      # 服务容器名称 (留空则为 app)
+  #     description: Git Server             # 服务描述
+  #     publish_port: "4003"                # 入站端口号 (支持 "1000-50000" 范围)
+  #     send_port_info: false               # 发送 uint16 端口信息 (little endian)
+  #     yes_i_want_80_443: false            # 允许 80/443 流量 (绕过系统鉴权,慎用!)
+
+  # 是否启用多实例
+  multi_instance: false
+
+  gpu_accel: false
+  kvm_accel: false
+  usb_accel: false
+
+services:
+  agola:
+    # lzc-cli appstore copy-image sorintlab/agolademo
+    image: registry.lazycat.cloud/liu/sorintlab/agolademo:4980eb70b59d050e
+    # command: serve --components all-base,executor
+    setup_script: |
+      #!/bin/sh
+      set -eu
+      CONFIG_DIR="/config"
+      DEFAULT_DIR="/lzcapp/pkg/content/config"
+      VERSION_FILE="${CONFIG_DIR}/.agola_version"
+      CURRENT_VERSION="v0.11.0"
+      INSTALLED_VERSION=""
+
+      if [ -f "${VERSION_FILE}" ]; then
+        INSTALLED_VERSION=$(cat "${VERSION_FILE}")
+        echo "Detected installed version: ${INSTALLED_VERSION}"
+      fi
+
+      if [ -n "${INSTALLED_VERSION}" ] && [ "${INSTALLED_VERSION}" != "${CURRENT_VERSION}" ]; then
+        echo "Configuration upgrade detected from ${INSTALLED_VERSION} to ${CURRENT_VERSION}"
+      fi
+
+      if [ ! -f "${CONFIG_DIR}/config.yaml" ] && [ -f "${DEFAULT_DIR}/config.yaml" ]; then
+        cp -f "${DEFAULT_DIR}/config.yaml" "${CONFIG_DIR}/config.yaml"
+        echo "Initialized config.yaml from defaults"
+      fi
+
+      # Replace the host placeholders in config.yaml
+      sed -i -e "s|https\?://localhost:8000|https://${LAZYCAT_APP_DOMAIN}|g" \
+             -e "s|https://[^\"]*\.heiyu\.space|https://${LAZYCAT_APP_DOMAIN}|g" /config/config.yaml
+
+      # Save current version
+      echo "$CURRENT_VERSION" > "$VERSION_FILE"
+
+      echo "Creating data directories..."
+      mkdir -p /data/agola/notification
+      mkdir -p /data/agola/configstore/ost
+      mkdir -p /data/agola/runservice/ost
+      mkdir -p /data/agola/executor
+      mkdir -p /data/agola/gitserver
+
+      echo "Starting Agola server..."
+      agola serve --components all-base,executor --config /config/config.yaml
+    binds:
+      - /lzcapp/var/config:/config
+      - /lzcapp/var/agola:/data/agola
+
+unsupported_platforms:
+  - ios
+  - android
+  - tvos
