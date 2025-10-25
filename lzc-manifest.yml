@@ -36,7 +36,7 @@ locales:
       ## 使用方法
 
       1. 启动应用后，通过域名访问 Agola Web 界面
-      2. 连接你的 Git 平台账号（GitHub/GitLab/Gitea）
+      2. 连接你的 Git 平台账号（GitHub/GitLab/Gitea），默认管理 token 是: admintoken
       3. 在项目中添加 `.agola/config.jsonnet` 配置文件
       4. 推送代码或创建 Pull Request 触发自动构建
       5. 在 Web 界面查看运行状态和日志
@@ -84,7 +84,7 @@ locales:
       ## Usage Instructions
 
       1. After starting the application, access the Agola Web interface via the domain
-      2. Connect your Git platform account (GitHub/GitLab/Gitea)
+      2. Connect your Git platform account (GitHub/GitLab/Gitea), the default admin token is: admintoken
       3. Add a `.agola/config.jsonnet` configuration file to your project
       4. Push code or create a Pull Request to trigger automatic builds
       5. View run status and logs in the Web interface
@@ -108,7 +108,7 @@ locales:
 license: https://choosealicense.com/licenses/apache-2.0/
 
 # 软件的主页,会在商店等地方体现
-homepage: https://github.com/lazycatapps/agola
+homepage: https://github.com/agola-io/agola
 
 # lpk 的作者,会在商店等地方体现
 author: liu
